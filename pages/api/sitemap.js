@@ -1,4 +1,4 @@
-const BASE_URL = "https://pega-aqui-tu-url.trycloudflare.com";
+const BASE_URL = process.env.RENDER_EXTERNAL_URL || "https://recordings-print-scott-wearing.trycloudflare.com";
 
 export default async function handler(req, res) {
   const staticRoutes = [
@@ -9,7 +9,8 @@ export default async function handler(req, res) {
 
   let dynamicRoutes = [];
   try {
-    const response = await fetch("http://127.0.0.1:3000/api/posts");
+    const port = process.env.PORT || 3000;
+    const response = await fetch(`http://127.0.0.1:${port}/api/posts`);
     const posts = await response.json();
     dynamicRoutes = posts.map((post) => ({
       url: post.slug,
