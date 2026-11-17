@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://pega-aqui-tu-url.trycloudflare.com/api/sitemap
